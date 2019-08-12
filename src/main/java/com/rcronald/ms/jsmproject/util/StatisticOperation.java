@@ -1,5 +1,6 @@
 package com.rcronald.ms.jsmproject.util;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.DoubleSummaryStatistics;
 
@@ -20,8 +21,10 @@ public class StatisticOperation {
         double rawSum = numbers.stream()
             .mapToDouble((x) -> Math.pow(x - stats.getAverage(), 2))
             .sum();
-        
-        return Math.sqrt(rawSum / (numbers.size() - 1));
+
+        double sd = Math.sqrt(rawSum / (numbers.size() - 1));
+
+        return formatDecimals(sd);
 	}
 
     public DoubleSummaryStatistics computeStatistics(Collection<Integer> numbers) {
@@ -40,4 +43,10 @@ public class StatisticOperation {
 			
         return avg;
 	}
+
+	public double formatDecimals(double value){
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formatted = df.format(value);
+        return Double.parseDouble(formatted);
+    }
 }

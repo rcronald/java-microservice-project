@@ -33,7 +33,7 @@ public class StatisticOperationTest {
     @Test
     public void testStandardDeviationFiveNumbers() {
         double actualSD = statisticOperationMock.computeStandardDeviation(numbersCollection);
-        double expectedSD = 1.7888543819998317;
+        double expectedSD = 1.79;
         assertEquals(expectedSD, actualSD, 0);
     }
 
