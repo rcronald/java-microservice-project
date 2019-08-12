@@ -15,7 +15,7 @@ pipeline {
 
     stage('deploy') {
         steps {
-            sh 'echo deploy'
+            sh './gradlew clean pushDockerImage'
         }
     }
   }
