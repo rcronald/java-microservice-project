@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  jenkins:
+  microservice:
     image: rcronald/java-microservice-project:0.0.1-snapshot
     ports:
-      - "9090:9090"
+      - "80:9090"

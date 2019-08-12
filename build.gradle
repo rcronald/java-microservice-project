@@ -66,11 +66,12 @@ task pushDockerImage(type: com.bmuschko.gradle.docker.tasks.image.DockerPushImag
 }
 
 docker {
-  registryCredentials {
-    url = (System.getenv('CONTAINER_REGISTRY_URL') ?: project.properties.getOrDefault('containerRegistryUrl', 'https://registry.hub.docker.io'))
-    username = (System.getenv('CONTAINER_REGISTRY_USERNAME') ?: (project.hasProperty('containerRegistryUsername') ? containerRegistryUsername : '')) ?: ''
-    password = (System.getenv('CONTAINER_REGISTRY_PASSWORD') ?: (project.hasProperty('containerRegistryPassword') ? containerRegistryPassword : '')) ?: ''
-  }
+    println 'REGISTRY=' + System.getenv('CONTAINER_REGISTRY_USERNAME')
+    registryCredentials {
+        url = (System.getenv('CONTAINER_REGISTRY_URL') ?: project.properties.getOrDefault('containerRegistryUrl', 'https://registry.hub.docker.io'))
+        username = (System.getenv('CONTAINER_REGISTRY_USERNAME') ?: (project.hasProperty('containerRegistryUsername') ? containerRegistryUsername : '')) ?: ''
+        password = (System.getenv('CONTAINER_REGISTRY_PASSWORD') ?: (project.hasProperty('containerRegistryPassword') ? containerRegistryPassword : '')) ?: ''
+    }
 }
 
 
