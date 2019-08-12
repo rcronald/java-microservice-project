@@ -16,9 +16,9 @@ pipeline {
     stage('deploy') {
         environment {
             CONTAINER_REGISTRY_USERNAME = credentials('CONTAINER_REGISTRY_USERNAME')
+            CONTAINER_REGISTRY_PASSWORD = credentials('CONTAINER_REGISTRY_PASSWORD')
         }
         steps {
-            sh 'echo $CONTAINER_REGISTRY_USERNAME'
             sh './gradlew clean pushDockerImage'
         }
     }
